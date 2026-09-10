@@ -7,6 +7,7 @@ import {
   CheckSquare,
   Repeat,
   Bot,
+  ListChecks,
   Search,
   Menu,
   X,
@@ -33,6 +34,7 @@ import { Input } from '@/components/ui/input'
 const navItems = [
   { name: 'Visão Geral', path: '/', icon: LayoutDashboard },
   { name: 'Pipeline', path: '/pipeline', icon: Kanban },
+  { name: 'Fila Manual', path: '/fila', icon: ListChecks },
   { name: 'Contas', path: '/contas', icon: Building2 },
   { name: 'Tarefas', path: '/tarefas', icon: CheckSquare },
   { name: 'Cadências', path: '/cadencias', icon: Repeat },
@@ -90,6 +92,7 @@ export default function Layout() {
     const path = location.pathname
     if (path === '/') return 'Visão Geral'
     if (path.startsWith('/pipeline')) return 'Pipeline de Vendas'
+    if (path.startsWith('/fila')) return 'Fila Manual de Leads'
     if (path.startsWith('/contas/')) return 'Detalhes da Conta'
     if (path.startsWith('/contas')) return 'Contas B2B'
     if (path.startsWith('/negocios/')) return 'Detalhes do Negócio'

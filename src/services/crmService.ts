@@ -1,4 +1,5 @@
 import pb from '@/lib/pocketbase/client'
+import type { FilaLeadRecord } from '@/types/fila'
 import type {
   ContaRecord,
   NegocioRecord,
@@ -8,6 +9,23 @@ import type {
   DocumentoRecord,
   ResumoPipelineResponse,
 } from '@/types/crm'
+
+export const filaService = {
+  async getLeads(filter?: string, sort = '-data_origem'): Promise<FilaLeadRecord[]> {
+    return (await pb
+      .collection('fila_leads')
+      .getFullList({ filter, sort })) as unknown as FilaLeadRecord[]
+  },
+  async createLead(data: Partial<FilaLeadRecord>): Promise<FilaLeadRecord> {
+    return (await pb.collection('fila_leads').create(data)) as unknown as FilaLeadRecord
+  },
+  async updateLead(id: string, data: Partial<FilaLeadRecord>): Promise<FilaLeadRecord> {
+    return (await pb.collection('fila_leads').update(id, data)) as unknown as FilaLeadRecord
+  },
+  async deleteLead(id: string): Promise<boolean> {
+    return await pb.collection('fila_leads').delete(id)
+  },
+}
 
 export const crmService = {
   // Contas

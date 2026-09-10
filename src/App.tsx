@@ -17,6 +17,7 @@ import DetalhesConta from '@/pages/DetalhesConta'
 import Tarefas from '@/pages/Tarefas'
 import Cadencias from '@/pages/Cadencias'
 import Assistente from '@/pages/Assistente'
+import FilaManual from '@/pages/FilaManual'
 import NotFound from '@/pages/NotFound'
 
 const App = () => (
@@ -54,6 +55,7 @@ const App = () => (
           >
             <Route path="/" element={<Index />} />
             <Route path="/pipeline" element={<Pipeline />} />
+            <Route path="/fila" element={<FilaManual />} />
             <Route path="/negocios/:id" element={<DetalhesNegocio />} />
             <Route path="/contas" element={<Contas />} />
             <Route path="/contas/:id" element={<DetalhesConta />} />

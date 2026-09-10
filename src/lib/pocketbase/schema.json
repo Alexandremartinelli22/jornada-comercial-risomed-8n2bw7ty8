@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T18:16:34.488Z",
+  "generatedAt": "2026-09-10T18:56:47.696Z",
   "collections": [
     {
       "name": "users",
@@ -29,14 +29,19 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate"]
+          "autodateTriggers": [
+            "onCreate"
+          ]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate", "onUpdate"]
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
         }
       ],
       "indexes": [
@@ -78,7 +83,11 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": ["Pequeno", "Médio", "Grande"]
+          "selectValues": [
+            "Pequeno",
+            "Médio",
+            "Grande"
+          ]
         },
         {
           "name": "site",
@@ -97,7 +106,13 @@
           "type": "select",
           "required": true,
           "system": false,
-          "selectValues": ["Prospecção", "Diagnóstico", "Proposta", "Negociação", "Fechado"]
+          "selectValues": [
+            "Prospecção",
+            "Diagnóstico",
+            "Proposta",
+            "Negociação",
+            "Fechado"
+          ]
         },
         {
           "name": "responsavel_id",
@@ -125,14 +140,19 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate"]
+          "autodateTriggers": [
+            "onCreate"
+          ]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate", "onUpdate"]
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
         }
       ],
       "indexes": [
@@ -175,7 +195,13 @@
           "type": "select",
           "required": true,
           "system": false,
-          "selectValues": ["Prospecção", "Diagnóstico", "Proposta", "Negociação", "Fechamento"]
+          "selectValues": [
+            "Prospecção",
+            "Diagnóstico",
+            "Proposta",
+            "Negociação",
+            "Fechamento"
+          ]
         },
         {
           "name": "previsao_fechamento",
@@ -201,14 +227,19 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate"]
+          "autodateTriggers": [
+            "onCreate"
+          ]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate", "onUpdate"]
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
         }
       ],
       "indexes": [
@@ -246,14 +277,22 @@
           "type": "select",
           "required": true,
           "system": false,
-          "selectValues": ["call", "email", "reuniao"]
+          "selectValues": [
+            "call",
+            "email",
+            "reuniao"
+          ]
         },
         {
           "name": "prioridade",
           "type": "select",
           "required": true,
           "system": false,
-          "selectValues": ["Alta", "Média", "Baixa"]
+          "selectValues": [
+            "Alta",
+            "Média",
+            "Baixa"
+          ]
         },
         {
           "name": "data_vencimento",
@@ -266,7 +305,10 @@
           "type": "select",
           "required": true,
           "system": false,
-          "selectValues": ["pendente", "concluida"]
+          "selectValues": [
+            "pendente",
+            "concluida"
+          ]
         },
         {
           "name": "responsavel_id",
@@ -286,21 +328,29 @@
           "type": "select",
           "required": true,
           "system": false,
-          "selectValues": ["manual", "cadencia"]
+          "selectValues": [
+            "manual",
+            "cadencia"
+          ]
         },
         {
           "name": "created",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate"]
+          "autodateTriggers": [
+            "onCreate"
+          ]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate", "onUpdate"]
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
         }
       ],
       "indexes": [
@@ -366,14 +416,19 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate"]
+          "autodateTriggers": [
+            "onCreate"
+          ]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate", "onUpdate"]
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
         }
       ],
       "indexes": [
@@ -415,7 +470,10 @@
           "type": "select",
           "required": true,
           "system": false,
-          "selectValues": ["ativa", "pausada"]
+          "selectValues": [
+            "ativa",
+            "pausada"
+          ]
         },
         {
           "name": "responsavel_id",
@@ -429,17 +487,24 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate"]
+          "autodateTriggers": [
+            "onCreate"
+          ]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate", "onUpdate"]
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
         }
       ],
-      "indexes": ["CREATE INDEX idx_cadencias_status ON cadencias (status)"]
+      "indexes": [
+        "CREATE INDEX idx_cadencias_status ON cadencias (status)"
+      ]
     },
     {
       "name": "documentos",
@@ -476,17 +541,171 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate"]
+          "autodateTriggers": [
+            "onCreate"
+          ]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate", "onUpdate"]
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
         }
       ],
-      "indexes": ["CREATE INDEX idx_documentos_negocio ON documentos (negocio_id)"]
+      "indexes": [
+        "CREATE INDEX idx_documentos_negocio ON documentos (negocio_id)"
+      ]
+    },
+    {
+      "name": "fila_leads",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != ''",
+        "view": "@request.auth.id != ''",
+        "create": "@request.auth.id != ''",
+        "update": "@request.auth.id != ''",
+        "delete": "@request.auth.id != ''"
+      },
+      "fields": [
+        {
+          "name": "data_origem",
+          "type": "date",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "empresa",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "solicitante",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "telefone",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cnpj",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "vidas",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cidade",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "origem",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "tag_icp",
+          "type": "select",
+          "required": true,
+          "system": false,
+          "selectValues": [
+            "ICP Principal",
+            "Fora ICP",
+            "Incompleto"
+          ]
+        },
+        {
+          "name": "estagio",
+          "type": "select",
+          "required": true,
+          "system": false,
+          "selectValues": [
+            "Prospecção",
+            "Contato",
+            "Apresentação",
+            "Proposta",
+            "Fechamento",
+            "Perdido"
+          ]
+        },
+        {
+          "name": "resultado_contato",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "proxima_acao",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "data_proxima_acao",
+          "type": "date",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "motivo_perda",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created_by",
+          "type": "relation",
+          "required": true,
+          "system": false,
+          "collectionRef": "users"
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": [
+        "CREATE INDEX idx_fila_leads_origem ON fila_leads (data_origem)",
+        "CREATE INDEX idx_fila_leads_estagio ON fila_leads (estagio)",
+        "CREATE INDEX idx_fila_leads_tag ON fila_leads (tag_icp)"
+      ]
     }
   ]
 }
