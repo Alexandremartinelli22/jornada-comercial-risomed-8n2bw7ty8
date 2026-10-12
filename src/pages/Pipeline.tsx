@@ -27,10 +27,10 @@ import { useToast } from '@/hooks/use-toast'
 
 const ETAPAS: { id: EtapaNegocio; label: string; color: string }[] = [
   { id: 'Prospecção', label: 'Prospecção', color: '#64748B' },
-  { id: 'Diagnóstico', label: 'Diagnóstico', color: '#0284C7' },
-  { id: 'Proposta', label: 'Proposta', color: '#003882' },
-  { id: 'Negociação', label: 'Negociação', color: '#7C3AED' },
-  { id: 'Fechamento', label: 'Fechamento', color: '#00A859' },
+  { id: 'Diagnóstico', label: 'Diagnóstico', color: '#29AABE' },
+  { id: 'Proposta', label: 'Proposta', color: '#1B2E5A' },
+  { id: 'Negociação', label: 'Negociação', color: '#4A6FA5' },
+  { id: 'Fechamento', label: 'Fechamento', color: '#F58220' },
 ]
 
 export default function Pipeline() {
@@ -188,17 +188,20 @@ export default function Pipeline() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm">
         <div>
-          <h2 className="text-2xl font-bold text-[#0F172A] tracking-tight">Pipeline Comercial</h2>
+          <h2 className="text-2xl font-bold text-[#1B2E5A] tracking-tight font-heading">
+            Pipeline Comercial
+          </h2>
           <p className="text-sm text-[#64748B] mt-0.5">
-            Arraste os cards para avançar os negócios no funil da jornada B2B da Risomed.
+            Diagnóstico que revela. Benefícios que resolvem. Dados que comprovam o avanço de cada
+            oportunidade.
           </p>
         </div>
 
         <Button
           onClick={() => handleOpenModal()}
-          className="bg-[#003882] hover:bg-[#00285e] text-white font-semibold transition active:scale-[0.98] self-start sm:self-center"
+          className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold transition active:scale-[0.98] self-start sm:self-center shadow-sm"
         >
-          <Plus className="h-4 w-4 mr-1.5" />
+          <Plus className="h-4 w-4 mr-1.5 text-[#F58220]" />
           Novo Negócio
         </Button>
       </div>
@@ -218,7 +221,7 @@ export default function Pipeline() {
               onDrop={(e) => handleDrop(e, col.id)}
               className={`flex flex-col rounded-xl border bg-white min-h-[500px] transition-all duration-200 ${
                 isTarget
-                  ? 'border-2 border-dashed border-[#003882] bg-[#F0F5FA]'
+                  ? 'border-2 border-dashed border-[#1B2E5A] bg-[#EBF6F8]'
                   : 'border-[#E2E8F0]'
               }`}
             >
@@ -240,12 +243,12 @@ export default function Pipeline() {
                     </span>
                     <button
                       type="button"
-                      aria-label={`Adicionar negócio em ${col.label}`}
-                      onClick={() => handleOpenModal(col.id)}
-                      className="p-1 rounded-md text-[#94A3B8] hover:text-[#003882] hover:bg-[#F1F5F9] transition"
+                      onClick={() => handleFastCreate(col.id)}
+                      className="p-1 rounded-md text-[#94A3B8] hover:text-[#1B2E5A] hover:bg-[#EBF6F8] transition"
+                      title="Adicionar negócio rápido nesta etapa"
                     >
                       <Plus className="h-4 w-4" />
-                    </button>
+                    </button>{' '}
                   </div>
                 </div>
                 <p className="text-[11px] font-semibold text-[#64748B] mt-1.5">
@@ -269,17 +272,17 @@ export default function Pipeline() {
                         isDragging ? 'opacity-40 scale-105 shadow-xl rotate-1' : ''
                       }`}
                     >
-                      <p className="font-bold text-xs text-[#0F172A] leading-snug group-hover:text-[#003882] transition line-clamp-2">
+                      <p className="font-bold text-xs text-[#0F172A] leading-snug group-hover:text-[#1B2E5A] transition line-clamp-2">
                         {neg.nome}
                       </p>
 
                       <div className="flex items-center gap-1.5 mt-2 text-xs text-[#475569]">
-                        <Building className="h-3.5 w-3.5 text-[#94A3B8] shrink-0" />
+                        <Building className="h-3.5 w-3.5 text-[#29AABE] shrink-0" />
                         <span className="truncate text-[11px] font-medium">{contaNome}</span>
                       </div>
 
                       <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-[#F8FAFC]">
-                        <span className="text-xs font-black text-[#003882]">
+                        <span className="text-xs font-black text-[#1B2E5A]">
                           R$ {neg.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                         </span>
                         <div
@@ -316,7 +319,9 @@ export default function Pipeline() {
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-[#003882]">Novo Negócio</DialogTitle>
+            <DialogTitle className="text-lg font-bold text-[#1B2E5A] font-heading">
+              Novo Negócio
+            </DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSaveNegocio} className="space-y-3.5">
             <div className="space-y-1">
@@ -418,7 +423,7 @@ export default function Pipeline() {
                 type="submit"
                 size="sm"
                 disabled={saving}
-                className="bg-[#003882] hover:bg-[#00285e] text-white"
+                className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold"
               >
                 {saving ? 'Salvando...' : 'Criar Negócio'}
               </Button>

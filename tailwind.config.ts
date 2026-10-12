@@ -30,12 +30,27 @@ export default {
         sans: ['Inter var', 'SF Pro Display', 'system-ui', 'sans-serif'],
         display: ['SF Pro Display', 'Inter var', 'system-ui', 'sans-serif'],
       },
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        risomed: {
+          navy: '#1B2E5A',
+          navyDark: '#132140',
+          navyLight: '#2A4580',
+          cyan: '#29AABE',
+          cyanLight: '#EBF6F8',
+          cyanDark: '#1E8B9C',
+          orange: '#F58220',
+          orangeLight: '#FEF3EB',
+          orangeHover: '#E06F12',
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',

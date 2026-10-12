@@ -34,13 +34,12 @@ import { Button } from '@/components/ui/button'
 import { useRealtime } from '@/hooks/use-realtime'
 
 const ETAPA_COLORS: Record<string, string> = {
-  Prospecção: '#94A3B8',
-  Diagnóstico: '#0284C7',
-  Proposta: '#003882',
-  Negociação: '#7C3AED',
-  Fechamento: '#00A859',
+  Prospecção: '#64748B',
+  Diagnóstico: '#29AABE',
+  Proposta: '#1B2E5A',
+  Negociação: '#4A6FA5',
+  Fechamento: '#F58220',
 }
-
 export default function Index() {
   const [periodo, setPeriodo] = useState<'7' | '30' | '90'>('30')
   const [negocios, setNegocios] = useState<NegocioRecord[]>([])
@@ -173,13 +172,16 @@ export default function Index() {
       {/* Top Banner / Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-[#EBF7F0] text-[#00A859] text-xs font-semibold mb-2">
-            <CheckCircle2 className="h-3.5 w-3.5" />
-            Ecossistema de Saúde Risomed
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-[#EBF6F8] text-[#1B2E5A] border border-[#C6E6EC] text-xs font-semibold mb-2">
+            <CheckCircle2 className="h-3.5 w-3.5 text-[#29AABE]" />
+            Resultado não é promessa. É dado.
           </div>
-          <h2 className="text-2xl font-bold text-[#0F172A] tracking-tight">Visão Geral</h2>
+          <h2 className="text-2xl font-bold text-[#1B2E5A] tracking-tight font-heading">
+            Visão Geral
+          </h2>
           <p className="text-sm text-[#64748B] mt-0.5">
-            Acompanhe os indicadores da sua jornada comercial e o impacto em saúde corporativa.
+            Diagnóstico que revela. Benefícios que resolvem. Dados que comprovam a jornada
+            comercial.
           </p>
         </div>
 
@@ -190,7 +192,7 @@ export default function Index() {
             onClick={() => setPeriodo('7')}
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition ${
               periodo === '7'
-                ? 'bg-white text-[#003882] shadow-sm'
+                ? 'bg-white text-[#1B2E5A] shadow-sm font-bold'
                 : 'text-[#64748B] hover:text-[#0F172A]'
             }`}
           >
@@ -201,7 +203,7 @@ export default function Index() {
             onClick={() => setPeriodo('30')}
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition ${
               periodo === '30'
-                ? 'bg-white text-[#003882] shadow-sm'
+                ? 'bg-white text-[#1B2E5A] shadow-sm font-bold'
                 : 'text-[#64748B] hover:text-[#0F172A]'
             }`}
           >
@@ -212,7 +214,7 @@ export default function Index() {
             onClick={() => setPeriodo('90')}
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition ${
               periodo === '90'
-                ? 'bg-white text-[#003882] shadow-sm'
+                ? 'bg-white text-[#1B2E5A] shadow-sm font-bold'
                 : 'text-[#64748B] hover:text-[#0F172A]'
             }`}
           >
@@ -229,12 +231,12 @@ export default function Index() {
             <span className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">
               Receita Fechada
             </span>
-            <div className="h-8 w-8 rounded-lg bg-[#EBF7F0] text-[#00A859] flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-[#FEF3EB] text-[#F58220] flex items-center justify-center">
               <DollarSign className="h-4 w-4" />
             </div>
           </CardHeader>
           <CardContent className="p-5 pt-0">
-            <div className="text-2xl lg:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+            <div className="text-2xl lg:text-3xl font-extrabold text-[#1B2E5A] tracking-tight font-heading">
               R${' '}
               {kpis.receitaFechada.toLocaleString('pt-BR', {
                 minimumFractionDigits: 0,
@@ -242,7 +244,7 @@ export default function Index() {
               })}
             </div>
             <div className="flex items-center gap-1.5 mt-2 text-xs">
-              <span className="inline-flex items-center text-[#00A859] font-bold">
+              <span className="inline-flex items-center text-[#F58220] font-bold">
                 <ArrowUpRight className="h-3.5 w-3.5 mr-0.5" />
                 +14.2%
               </span>
@@ -255,8 +257,8 @@ export default function Index() {
                   <Area
                     type="monotone"
                     dataKey="taxa"
-                    stroke="#00A859"
-                    fill="#EBF7F0"
+                    stroke="#F58220"
+                    fill="#FEF3EB"
                     strokeWidth={2}
                   />
                 </AreaChart>
@@ -271,16 +273,16 @@ export default function Index() {
             <span className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">
               Propostas Enviadas
             </span>
-            <div className="h-8 w-8 rounded-lg bg-[#F0F5FA] text-[#003882] flex items-center justify-center">
-              <FileCheck className="h-4 w-4" />
+            <div className="h-8 w-8 rounded-lg bg-[#EBF6F8] text-[#1B2E5A] flex items-center justify-center">
+              <FileCheck className="h-4 w-4 text-[#29AABE]" />
             </div>
           </CardHeader>
           <CardContent className="p-5 pt-0">
-            <div className="text-2xl lg:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+            <div className="text-2xl lg:text-3xl font-extrabold text-[#1B2E5A] tracking-tight font-heading">
               {kpis.propostasEnviadas}
             </div>
             <div className="flex items-center gap-1.5 mt-2 text-xs">
-              <span className="inline-flex items-center text-[#00A859] font-bold">
+              <span className="inline-flex items-center text-[#29AABE] font-bold">
                 <ArrowUpRight className="h-3.5 w-3.5 mr-0.5" />
                 +8.5%
               </span>
@@ -292,8 +294,8 @@ export default function Index() {
                   <Area
                     type="monotone"
                     dataKey="taxa"
-                    stroke="#003882"
-                    fill="#F0F5FA"
+                    stroke="#1B2E5A"
+                    fill="#EBF6F8"
                     strokeWidth={2}
                   />
                 </AreaChart>
@@ -308,16 +310,16 @@ export default function Index() {
             <span className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">
               Taxa de Conversão
             </span>
-            <div className="h-8 w-8 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-[#EBF6F8] text-[#29AABE] flex items-center justify-center">
               <Percent className="h-4 w-4" />
             </div>
           </CardHeader>
           <CardContent className="p-5 pt-0">
-            <div className="text-2xl lg:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+            <div className="text-2xl lg:text-3xl font-extrabold text-[#1B2E5A] tracking-tight font-heading">
               {kpis.taxaConversao}%
             </div>
             <div className="flex items-center gap-1.5 mt-2 text-xs">
-              <span className="inline-flex items-center text-[#00A859] font-bold">
+              <span className="inline-flex items-center text-[#29AABE] font-bold">
                 <ArrowUpRight className="h-3.5 w-3.5 mr-0.5" />
                 +3.1%
               </span>
@@ -329,8 +331,8 @@ export default function Index() {
                   <Area
                     type="monotone"
                     dataKey="taxa"
-                    stroke="#7C3AED"
-                    fill="#F5F3FF"
+                    stroke="#29AABE"
+                    fill="#EBF6F8"
                     strokeWidth={2}
                   />
                 </AreaChart>
@@ -345,16 +347,16 @@ export default function Index() {
             <span className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">
               Contas & Leads
             </span>
-            <div className="h-8 w-8 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-[#FEF3EB] text-[#F58220] flex items-center justify-center">
               <Users className="h-4 w-4" />
             </div>
           </CardHeader>
           <CardContent className="p-5 pt-0">
-            <div className="text-2xl lg:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+            <div className="text-2xl lg:text-3xl font-extrabold text-[#1B2E5A] tracking-tight font-heading">
               {kpis.leadsNovos}
             </div>
             <div className="flex items-center gap-1.5 mt-2 text-xs">
-              <span className="inline-flex items-center text-[#00A859] font-bold">
+              <span className="inline-flex items-center text-[#F58220] font-bold">
                 <ArrowUpRight className="h-3.5 w-3.5 mr-0.5" />
                 +12.0%
               </span>
@@ -366,8 +368,8 @@ export default function Index() {
                   <Area
                     type="monotone"
                     dataKey="taxa"
-                    stroke="#0284C7"
-                    fill="#E0F2FE"
+                    stroke="#29AABE"
+                    fill="#EBF6F8"
                     strokeWidth={2}
                   />
                 </AreaChart>
@@ -384,14 +386,14 @@ export default function Index() {
           <CardHeader className="p-5 border-b border-[#F1F5F9]">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-base font-bold text-[#0F172A]">
+                <CardTitle className="text-base font-bold text-[#1B2E5A] font-heading">
                   Faturamento por Mês
                 </CardTitle>
                 <CardDescription className="text-xs text-[#64748B]">
                   Evolução do faturamento comercial (mês atual em destaque).
                 </CardDescription>
               </div>
-              <span className="text-xs font-semibold text-[#003882] bg-[#F0F5FA] px-2.5 py-1 rounded-full">
+              <span className="text-xs font-semibold text-[#1B2E5A] bg-[#EBF6F8] border border-[#C6E6EC] px-2.5 py-1 rounded-full">
                 Meta Anual: R$ 1.8M
               </span>
             </div>
@@ -419,7 +421,7 @@ export default function Index() {
                   />
                   <Bar dataKey="valor" radius={[6, 6, 0, 0]} animationDuration={600}>
                     {monthlyData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.atual ? '#00A859' : '#003882'} />
+                      <Cell key={`cell-${index}`} fill={entry.atual ? '#F58220' : '#1B2E5A'} />
                     ))}
                   </Bar>
                 </BarChart>
@@ -521,9 +523,9 @@ export default function Index() {
                   <Area
                     type="monotone"
                     dataKey="taxa"
-                    stroke="#003882"
-                    fill="#003882"
-                    fillOpacity={0.12}
+                    stroke="#1B2E5A"
+                    fill="#29AABE"
+                    fillOpacity={0.18}
                     strokeWidth={2.5}
                     animationDuration={600}
                   />
@@ -531,7 +533,7 @@ export default function Index() {
               </ResponsiveContainer>
             </div>
             <div className="mt-2 text-center text-xs font-medium text-[#64748B]">
-              Meta de conversão média: <span className="text-[#00A859] font-bold">25%</span>
+              Meta de conversão média: <span className="text-[#F58220] font-bold">25%</span>
             </div>
           </CardContent>
         </Card>
@@ -540,21 +542,21 @@ export default function Index() {
         <Card className="lg:col-span-2 rounded-xl border-[#E2E8F0] shadow-sm">
           <CardHeader className="p-5 border-b border-[#F1F5F9] flex flex-row items-center justify-between">
             <div>
-              <CardTitle className="text-base font-bold text-[#0F172A]">
+              <CardTitle className="text-base font-bold text-[#1B2E5A] font-heading">
                 Negócios Recentes
               </CardTitle>
               <CardDescription className="text-xs text-[#64748B]">
-                Últimas oportunidades ativas na jornada comercial.
+                Comece pequeno. Comprove o valor. Depois escale.
               </CardDescription>
             </div>
             <Link to="/pipeline">
               <Button
                 variant="outline"
                 size="sm"
-                className="text-xs border-[#CBD5E1] text-[#003882] hover:bg-[#F0F5FA]"
+                className="text-xs border-[#CBD5E1] text-[#1B2E5A] hover:bg-[#EBF6F8] hover:border-[#29AABE]"
               >
                 Ver Pipeline completo
-                <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
+                <ArrowRight className="h-3.5 w-3.5 ml-1.5 text-[#F58220]" />
               </Button>
             </Link>
           </CardHeader>
@@ -597,10 +599,10 @@ export default function Index() {
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="text-xs text-[#003882] hover:bg-[#F0F5FA] h-7 px-2.5"
+                              className="text-xs text-[#1B2E5A] hover:bg-[#EBF6F8] hover:text-[#29AABE] h-7 px-2.5"
                             >
-                              Detalhes
-                            </Button>
+                              Abrir
+                            </Button>{' '}
                           </Link>
                         </td>
                       </tr>

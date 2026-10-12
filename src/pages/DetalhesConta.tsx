@@ -87,7 +87,7 @@ export default function DetalhesConta() {
   if (loading || !conta) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#003882] border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#1B2E5A] border-t-[#29AABE]" />
       </div>
     )
   }
@@ -99,7 +99,7 @@ export default function DetalhesConta() {
       {/* Back button */}
       <div>
         <Link to="/contas">
-          <Button variant="ghost" size="sm" className="text-[#64748B] hover:text-[#003882]">
+          <Button variant="ghost" size="sm" className="text-[#64748B] hover:text-[#1B2E5A]">
             <ArrowLeft className="h-4 w-4 mr-1.5" />
             Voltar para Contas
           </Button>
@@ -110,25 +110,27 @@ export default function DetalhesConta() {
       <div className="bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
-            <div className="h-12 w-12 rounded-xl bg-[#F0F5FA] border border-[#DCE7F3] flex items-center justify-center text-[#003882] shrink-0">
-              <Building2 className="h-6 w-6" />
+            <div className="h-12 w-12 rounded-xl bg-[#EBF6F8] border border-[#C6E6EC] flex items-center justify-center text-[#1B2E5A] shrink-0">
+              <Building2 className="h-6 w-6 text-[#29AABE]" />
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-100 text-[#003882]">
+                <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#EBF6F8] text-[#1B2E5A] border border-[#C6E6EC]">
                   {conta.status}
                 </span>
                 <span className="text-xs text-[#64748B] font-medium">
                   Porte: {conta.tamanho || 'Médio'}
                 </span>
               </div>
-              <h1 className="text-2xl font-black text-[#0F172A] tracking-tight">{conta.nome}</h1>
+              <h1 className="text-2xl font-black text-[#1B2E5A] tracking-tight font-heading">
+                {conta.nome}
+              </h1>
               <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-[#64748B]">
                 {conta.cnpj && <span>CNPJ: {conta.cnpj}</span>}
                 {conta.setor && <span>• Setor: {conta.setor}</span>}
                 {conta.telefone && (
                   <span className="inline-flex items-center gap-1">
-                    <Phone className="h-3 w-3" />
+                    <Phone className="h-3 w-3 text-[#29AABE]" />
                     {conta.telefone}
                   </span>
                 )}
@@ -137,7 +139,7 @@ export default function DetalhesConta() {
                     href={conta.site}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-[#003882] hover:underline"
+                    className="inline-flex items-center gap-1 text-[#1B2E5A] hover:text-[#29AABE] hover:underline font-medium"
                   >
                     <Globe className="h-3 w-3" />
                     Site
@@ -189,7 +191,7 @@ export default function DetalhesConta() {
                 </span>
               </CardHeader>
               <CardContent className="p-4 pt-0">
-                <div className="text-2xl font-black text-[#003882]">
+                <div className="text-2xl font-black text-[#1B2E5A]">
                   R$ {receitaPotencial.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </div>
                 <p className="text-[11px] text-[#94A3B8] mt-1">
@@ -205,7 +207,7 @@ export default function DetalhesConta() {
                 </span>
               </CardHeader>
               <CardContent className="p-4 pt-0">
-                <div className="text-2xl font-black text-[#00A859]">
+                <div className="text-2xl font-black text-[#F58220]">
                   {tarefas.filter((t) => t.status === 'pendente').length}
                 </div>
                 <p className="text-[11px] text-[#94A3B8] mt-1">Follow-ups em andamento</p>
@@ -251,8 +253,11 @@ export default function DetalhesConta() {
                 Oportunidades Comerciais
               </CardTitle>
               <Link to="/pipeline">
-                <Button size="sm" className="bg-[#003882] text-white text-xs">
-                  <Plus className="h-3.5 w-3.5 mr-1" />
+                <Button
+                  size="sm"
+                  className="bg-[#1B2E5A] hover:bg-[#132140] text-white text-xs font-semibold shadow-sm"
+                >
+                  <Plus className="h-3.5 w-3.5 mr-1 text-[#F58220]" />
                   Ir ao Pipeline
                 </Button>
               </Link>
@@ -262,16 +267,16 @@ export default function DetalhesConta() {
                 <div
                   key={n.id}
                   onClick={() => navigate(`/negocios/${n.id}`)}
-                  className="flex items-center justify-between p-3.5 rounded-xl border border-[#E2E8F0] hover:bg-[#F8FAFC] cursor-pointer transition"
+                  className="flex items-center justify-between p-3.5 rounded-xl border border-[#E2E8F0] hover:border-[#29AABE] hover:bg-[#F8FAFC] cursor-pointer transition"
                 >
                   <div>
                     <p className="font-bold text-sm text-[#0F172A]">{n.nome}</p>
-                    <span className="text-[11px] font-semibold text-[#003882]">
+                    <span className="text-[11px] font-semibold text-[#1B2E5A]">
                       Etapa: {n.etapa}
                     </span>
                   </div>
                   <div className="text-right">
-                    <p className="font-extrabold text-sm text-[#003882]">
+                    <p className="font-extrabold text-sm text-[#1B2E5A]">
                       R$ {n.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                     </p>
                     {n.previsao_fechamento && (

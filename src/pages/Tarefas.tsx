@@ -159,11 +159,11 @@ export default function Tarefas() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm">
         <div>
-          <h2 className="text-2xl font-bold text-[#0F172A] tracking-tight">
+          <h2 className="text-2xl font-bold text-[#1B2E5A] tracking-tight font-heading">
             Gestão de Tarefas & Follow-up
           </h2>
           <p className="text-sm text-[#64748B] mt-0.5">
-            Organize contatos, reuniões e lembretes automáticos gerados pelas cadências.
+            Comece pequeno. Comprove o valor. Depois escale cada conta.
           </p>
         </div>
 
@@ -177,9 +177,9 @@ export default function Tarefas() {
             setDescricao('')
             setModalOpen(true)
           }}
-          className="bg-[#003882] hover:bg-[#00285e] text-white font-semibold transition active:scale-[0.98] self-start sm:self-center"
+          className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold transition active:scale-[0.98] self-start sm:self-center shadow-sm"
         >
-          <Plus className="h-4 w-4 mr-1.5" />
+          <Plus className="h-4 w-4 mr-1.5 text-[#F58220]" />
           Nova Tarefa
         </Button>
       </div>
@@ -194,7 +194,7 @@ export default function Tarefas() {
               onClick={() => setStatusFilter('pendente')}
               className={`px-3 py-1 text-xs font-semibold rounded-md transition ${
                 statusFilter === 'pendente'
-                  ? 'bg-white text-[#003882] shadow-xs'
+                  ? 'bg-white text-[#1B2E5A] font-bold shadow-xs'
                   : 'text-[#64748B] hover:text-[#0F172A]'
               }`}
             >
@@ -205,7 +205,7 @@ export default function Tarefas() {
               onClick={() => setStatusFilter('concluida')}
               className={`px-3 py-1 text-xs font-semibold rounded-md transition ${
                 statusFilter === 'concluida'
-                  ? 'bg-white text-[#003882] shadow-xs'
+                  ? 'bg-white text-[#1B2E5A] font-bold shadow-xs'
                   : 'text-[#64748B] hover:text-[#0F172A]'
               }`}
             >
@@ -216,7 +216,7 @@ export default function Tarefas() {
               onClick={() => setStatusFilter('todas')}
               className={`px-3 py-1 text-xs font-semibold rounded-md transition ${
                 statusFilter === 'todas'
-                  ? 'bg-white text-[#003882] shadow-xs'
+                  ? 'bg-white text-[#1B2E5A] font-bold shadow-xs'
                   : 'text-[#64748B] hover:text-[#0F172A]'
               }`}
             >
@@ -284,8 +284,8 @@ export default function Tarefas() {
                         onClick={() => handleToggleStatus(t)}
                         className={`h-5 w-5 rounded border flex items-center justify-center transition ${
                           isConcluida
-                            ? 'bg-[#00A859] border-[#00A859] text-white'
-                            : 'border-[#CBD5E1] hover:border-[#003882] bg-white'
+                            ? 'bg-[#29AABE] border-[#29AABE] text-white'
+                            : 'border-[#CBD5E1] hover:border-[#1B2E5A] bg-white'
                         }`}
                       >
                         {isConcluida && <CheckCircle2 className="h-3.5 w-3.5" />}
@@ -308,7 +308,7 @@ export default function Tarefas() {
                     <td className="py-3.5 px-4">
                       <Link
                         to={`/contas/${t.conta_id}`}
-                        className="font-medium text-[#003882] hover:underline"
+                        className="font-medium text-[#1B2E5A] hover:text-[#29AABE] hover:underline"
                       >
                         {contaNome}
                       </Link>
@@ -350,7 +350,7 @@ export default function Tarefas() {
                       <span
                         className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                           t.origem === 'cadencia'
-                            ? 'bg-[#EBF7F0] text-[#00A859]'
+                            ? 'bg-[#EBF6F8] text-[#29AABE]'
                             : 'bg-slate-100 text-slate-600'
                         }`}
                       >
@@ -377,7 +377,7 @@ export default function Tarefas() {
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-base font-bold text-[#003882]">
+            <DialogTitle className="text-base font-bold text-[#1B2E5A] font-heading">
               Nova Tarefa de Follow-up
             </DialogTitle>
           </DialogHeader>
@@ -493,10 +493,10 @@ export default function Tarefas() {
                 type="submit"
                 size="sm"
                 disabled={saving}
-                className="bg-[#003882] hover:bg-[#00285e] text-white"
+                className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold"
               >
-                {saving ? 'Salvando...' : 'Criar Tarefa'}
-              </Button>
+                {saving ? 'Criando...' : 'Criar Tarefa'}
+              </Button>{' '}
             </DialogFooter>
           </form>
         </DialogContent>

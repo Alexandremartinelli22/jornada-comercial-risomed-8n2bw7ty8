@@ -182,17 +182,19 @@ export default function Contas() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm">
         <div>
-          <h2 className="text-2xl font-bold text-[#0F172A] tracking-tight">Contas Comerciais</h2>
+          <h2 className="text-2xl font-bold text-[#1B2E5A] tracking-tight font-heading">
+            Contas Comerciais
+          </h2>
           <p className="text-sm text-[#64748B] mt-0.5">
-            Gerencie empresas clientes e oportunidades de implantação em saúde corporativa.
+            Cuidamos das pessoas. Geramos resultados para empresas.
           </p>
         </div>
 
         <Button
           onClick={handleOpenModal}
-          className="bg-[#003882] hover:bg-[#00285e] text-white font-semibold transition active:scale-[0.98] self-start sm:self-center"
+          className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold transition active:scale-[0.98] self-start sm:self-center shadow-sm"
         >
-          <Plus className="h-4 w-4 mr-1.5" />
+          <Plus className="h-4 w-4 mr-1.5 text-[#F58220]" />
           Nova Conta
         </Button>
       </div>
@@ -267,7 +269,7 @@ export default function Contas() {
                     className="hover:bg-[#F8FAFC] cursor-pointer transition"
                   >
                     <td className="py-3.5 px-5">
-                      <p className="font-bold text-[#0F172A] text-sm hover:text-[#003882]">
+                      <p className="font-bold text-[#0F172A] text-sm hover:text-[#1B2E5A]">
                         {c.nome}
                       </p>
                       {c.cnpj && <p className="text-[11px] text-[#94A3B8]">{c.cnpj}</p>}
@@ -288,14 +290,14 @@ export default function Contas() {
                         {c.status}
                       </span>
                     </td>
-                    <td className="py-3.5 px-4 text-right font-black text-[#003882]">
+                    <td className="py-3.5 px-4 text-right font-black text-[#1B2E5A]">
                       R$ {potencial.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                     </td>
                     <td className="py-3.5 px-4 text-right">
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="text-xs text-[#003882] hover:bg-[#F0F5FA] h-7 px-2.5"
+                        className="text-xs text-[#1B2E5A] hover:bg-[#EBF6F8] hover:text-[#29AABE] h-7 px-2.5"
                       >
                         Ver Perfil
                       </Button>
@@ -340,7 +342,7 @@ export default function Contas() {
                 </p>
                 <div className="flex items-center justify-between mt-3 text-xs">
                   <span className="text-[#94A3B8]">Potencial:</span>
-                  <span className="font-bold text-[#003882]">
+                  <span className="font-bold text-[#1B2E5A]">
                     R$ {potencial.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
@@ -354,10 +356,10 @@ export default function Contas() {
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-[#003882]">
-              Cadastrar Nova Conta
+            <DialogTitle className="text-lg font-bold text-[#1B2E5A] font-heading">
+              {editId ? 'Editar Conta' : 'Nova Conta Corporativa'}
             </DialogTitle>
-          </DialogHeader>
+          </DialogHeader>{' '}
           <form onSubmit={handleCreateConta} className="space-y-3.5">
             <div className="space-y-1">
               <Label htmlFor="nome-conta" className="text-xs font-semibold text-[#334155]">
@@ -519,7 +521,7 @@ export default function Contas() {
                 type="submit"
                 size="sm"
                 disabled={saving}
-                className="bg-[#003882] hover:bg-[#00285e] text-white"
+                className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold"
               >
                 {saving ? 'Cadastrando...' : 'Cadastrar Conta'}
               </Button>

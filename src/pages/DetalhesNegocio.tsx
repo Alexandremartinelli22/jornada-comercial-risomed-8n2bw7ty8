@@ -230,7 +230,7 @@ export default function DetalhesNegocio() {
   if (loading || !negocio) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#003882] border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#1B2E5A] border-t-[#29AABE]" />
       </div>
     )
   }
@@ -243,7 +243,7 @@ export default function DetalhesNegocio() {
       {/* Top Navigation Back */}
       <div className="flex items-center gap-2">
         <Link to="/pipeline">
-          <Button variant="ghost" size="sm" className="text-[#64748B] hover:text-[#003882]">
+          <Button variant="ghost" size="sm" className="text-[#64748B] hover:text-[#1B2E5A]">
             <ArrowLeft className="h-4 w-4 mr-1.5" />
             Voltar para o Pipeline
           </Button>
@@ -257,24 +257,28 @@ export default function DetalhesNegocio() {
             <div className="flex items-center gap-2 mb-2">
               <span
                 className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
-                  isFechado ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800'
+                  isFechado
+                    ? 'bg-[#FEF3EB] text-[#F58220] border border-[#FCD8BE]'
+                    : 'bg-[#EBF6F8] text-[#1B2E5A] border border-[#C6E6EC]'
                 }`}
               >
                 Etapa: {negocio.etapa}
               </span>
               {isFechado && (
-                <span className="inline-flex items-center gap-1 text-xs font-bold text-[#00A859] bg-[#EBF7F0] px-2 py-0.5 rounded-full">
+                <span className="inline-flex items-center gap-1 text-xs font-bold text-[#F58220] bg-[#FEF3EB] px-2 py-0.5 rounded-full">
                   <Award className="h-3 w-3" />
                   Negócio Ganho
                 </span>
               )}
             </div>
-            <h1 className="text-2xl font-black text-[#0F172A] tracking-tight">{negocio.nome}</h1>
+            <h1 className="text-2xl font-black text-[#1B2E5A] tracking-tight font-heading">
+              {negocio.nome}
+            </h1>
             <div className="flex flex-wrap items-center gap-4 mt-2 text-xs text-[#64748B]">
               {conta && (
                 <Link
                   to={`/contas/${conta.id}`}
-                  className="flex items-center gap-1.5 hover:text-[#003882] font-semibold underline"
+                  className="flex items-center gap-1.5 hover:text-[#1B2E5A] font-semibold underline text-[#29AABE]"
                 >
                   <Building className="h-3.5 w-3.5" />
                   {conta.nome}
@@ -283,11 +287,11 @@ export default function DetalhesNegocio() {
               )}
               {negocio.previsao_fechamento && (
                 <span className="flex items-center gap-1">
-                  <Calendar className="h-3.5 w-3.5" />
+                  <Calendar className="h-3.5 w-3.5 text-[#29AABE]" />
                   Previsão: {new Date(negocio.previsao_fechamento).toLocaleDateString('pt-BR')}
                 </span>
               )}
-              <span className="font-bold text-[#003882] text-sm">
+              <span className="font-bold text-[#1B2E5A] text-sm">
                 R$ {negocio.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </span>
             </div>
@@ -297,7 +301,7 @@ export default function DetalhesNegocio() {
             {!isFechado && (
               <Button
                 onClick={handleAvancarEtapa}
-                className="bg-[#003882] hover:bg-[#00285e] text-white text-xs font-semibold"
+                className="bg-[#1B2E5A] hover:bg-[#132140] text-white text-xs font-semibold shadow-sm"
               >
                 Avançar Etapa
               </Button>
@@ -305,7 +309,7 @@ export default function DetalhesNegocio() {
             <Button
               onClick={handleConverterConta}
               variant="outline"
-              className="border-[#00A859] text-[#00A859] hover:bg-[#EBF7F0] text-xs font-semibold"
+              className="border-[#F58220] text-[#F58220] hover:bg-[#FEF3EB] text-xs font-semibold"
             >
               <CheckCircle className="h-3.5 w-3.5 mr-1.5" />
               Converter em Conta (Fechado)
@@ -349,9 +353,9 @@ export default function DetalhesNegocio() {
               <Button
                 size="sm"
                 onClick={() => setModalAtvOpen(true)}
-                className="bg-[#003882] hover:bg-[#00285e] text-white text-xs"
+                className="bg-[#1B2E5A] hover:bg-[#132140] text-white text-xs shadow-sm font-semibold"
               >
-                <Plus className="h-3.5 w-3.5 mr-1" />
+                <Plus className="h-3.5 w-3.5 mr-1 text-[#F58220]" />
                 Registrar Atividade
               </Button>
             </CardHeader>
@@ -362,14 +366,14 @@ export default function DetalhesNegocio() {
                     key={atv.id}
                     className="flex items-start gap-3 p-3.5 rounded-xl border border-[#F1F5F9] bg-[#F8FAFC]"
                   >
-                    <div className="h-8 w-8 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center text-[#003882] shrink-0">
-                      {atv.tipo === 'call' && <PhoneCall className="h-4 w-4" />}
-                      {atv.tipo === 'email' && <Mail className="h-4 w-4" />}
-                      {atv.tipo === 'reuniao' && <Users className="h-4 w-4" />}
+                    <div className="h-8 w-8 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center text-[#1B2E5A] shrink-0">
+                      {atv.tipo === 'call' && <PhoneCall className="h-4 w-4 text-[#29AABE]" />}
+                      {atv.tipo === 'email' && <Mail className="h-4 w-4 text-[#29AABE]" />}
+                      {atv.tipo === 'reuniao' && <Users className="h-4 w-4 text-[#1B2E5A]" />}
                       {(atv.tipo === 'tarefa_criada' ||
                         atv.tipo === 'negocio_fechado' ||
                         atv.tipo === 'observacao') && (
-                        <CheckCircle className="h-4 w-4 text-[#00A859]" />
+                        <CheckCircle className="h-4 w-4 text-[#F58220]" />
                       )}
                     </div>
                     <div className="flex-1">
@@ -420,9 +424,9 @@ export default function DetalhesNegocio() {
                   size="sm"
                   disabled={uploading}
                   onClick={() => document.getElementById('doc-file-input')?.click()}
-                  className="bg-[#003882] hover:bg-[#00285e] text-white text-xs"
+                  className="bg-[#1B2E5A] hover:bg-[#132140] text-white text-xs shadow-sm font-semibold"
                 >
-                  <Upload className="h-3.5 w-3.5 mr-1.5" />
+                  <Upload className="h-3.5 w-3.5 mr-1.5 text-[#F58220]" />
                   {uploading ? 'Enviando...' : 'Anexar Documento'}
                 </Button>
               </div>
@@ -435,7 +439,7 @@ export default function DetalhesNegocio() {
                     className="flex items-center justify-between p-3 rounded-lg border border-[#E2E8F0] bg-white hover:bg-[#F8FAFC] transition"
                   >
                     <div className="flex items-center gap-3">
-                      <FileText className="h-5 w-5 text-[#003882]" />
+                      <FileText className="h-5 w-5 text-[#29AABE]" />
                       <div>
                         <p className="text-xs font-bold text-[#1E293B]">{doc.nome}</p>
                         <p className="text-[10px] text-[#94A3B8]">
@@ -469,7 +473,7 @@ export default function DetalhesNegocio() {
       <Dialog open={modalAtvOpen} onOpenChange={setModalAtvOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-base font-bold text-[#003882]">
+            <DialogTitle className="text-base font-bold text-[#1B2E5A] font-heading">
               Registrar Atividade de Follow-up
             </DialogTitle>
           </DialogHeader>
@@ -528,7 +532,7 @@ export default function DetalhesNegocio() {
                 type="submit"
                 size="sm"
                 disabled={savingAtv}
-                className="bg-[#003882] hover:bg-[#00285e] text-white"
+                className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold"
               >
                 {savingAtv ? 'Salvando...' : 'Salvar Atividade'}
               </Button>

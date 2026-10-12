@@ -1,5 +1,5 @@
 /* Global styles - Theme, font, utilities, animations and global components */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,47 +16,51 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* Risomed Blue: #003882 -> 214 100% 25% */
-    --primary: 214 100% 25%;
+    /* Identidade Oficial Risomed (www.risomed.com.br):
+       Navy: #1B2E5A -> 221 54% 23%
+       Turquesa / Ciano: #29AABE -> 188 64% 45%
+       Laranja / Acento: #F58220 -> 28 92% 54%
+    */
+    --primary: 221 54% 23%;
     --primary-foreground: 0 0% 100%;
 
-    /* Risomed Green / Accent: #00A859 -> 152 100% 33% */
-    --secondary: 152 100% 33%;
+    --secondary: 188 64% 45%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 20% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 214 90% 96%;
-    --accent-foreground: 214 100% 25%;
+    --accent: 188 64% 96%;
+    --accent-foreground: 221 54% 23%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214 20% 90%;
     --input: 214 20% 90%;
-    --ring: 214 100% 25%;
+    --ring: 221 54% 23%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 214 100% 25%;
+    --sidebar-primary: 221 54% 23%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 214 90% 96%;
-    --sidebar-accent-foreground: 214 100% 25%;
+    --sidebar-accent: 188 64% 96%;
+    --sidebar-accent-foreground: 221 54% 23%;
     --sidebar-border: 214 20% 92%;
-    --sidebar-ring: 214 100% 25%;
+    --sidebar-ring: 221 54% 23%;
 
-    --chart-1: 214 100% 25%;
-    --chart-2: 152 100% 33%;
-    --chart-3: 199 89% 48%;
-    --chart-4: 262 83% 58%;
-    --chart-5: 38 92% 50%;
+    --chart-1: 221 54% 23%; /* Navy #1B2E5A */
+    --chart-2: 188 64% 45%; /* Cyan #29AABE */
+    --chart-3: 28 92% 54%; /* Orange #F58220 */
+    --chart-4: 214 32% 55%; /* Slate blue */
+    --chart-5: 188 64% 65%; /* Soft cyan */
   }
 
   body {
     font-family:
+      'Plus Jakarta Sans',
       'Inter',
       -apple-system,
       BlinkMacSystemFont,
@@ -64,7 +68,7 @@
       Roboto,
       sans-serif;
     background-color: #f8fafc;
-    color: #111827;
+    color: #0f172a;
     -webkit-font-smoothing: antialiased;
   }
 

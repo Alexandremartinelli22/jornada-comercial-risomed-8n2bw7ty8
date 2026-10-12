@@ -247,20 +247,20 @@ export default function Cadencias() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm">
         <div>
-          <h2 className="text-2xl font-bold text-[#0F172A] tracking-tight">
+          <h2 className="text-2xl font-bold text-[#1B2E5A] tracking-tight font-heading">
             Cadências de Prospecção & Follow-up
           </h2>
           <p className="text-sm text-[#64748B] mt-0.5 max-w-2xl">
-            Automatize seus follow-ups. Crie sequências de e-mails e tarefas para acompanhar leads
-            ao longo do tempo e transformar dados em fechamentos.
+            Diagnóstico que revela. Benefícios que resolvem. Dados que comprovam cada etapa de
+            contato.
           </p>
         </div>
 
         <Button
           onClick={handleOpenCreate}
-          className="bg-[#003882] hover:bg-[#00285e] text-white font-semibold transition active:scale-[0.98] self-start sm:self-center"
+          className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold transition active:scale-[0.98] self-start sm:self-center shadow-sm"
         >
-          <Plus className="h-4 w-4 mr-1.5" />
+          <Plus className="h-4 w-4 mr-1.5 text-[#F58220]" />
           Nova Cadência
         </Button>
       </div>
@@ -305,7 +305,7 @@ export default function Cadencias() {
                       className={`h-8 px-2 text-xs font-semibold ${
                         isAtiva
                           ? 'text-amber-700 hover:bg-amber-50'
-                          : 'text-[#00A859] hover:bg-emerald-50'
+                          : 'text-[#29AABE] hover:bg-[#EBF6F8]'
                       }`}
                     >
                       {isAtiva ? 'Pausar' : 'Ativar'}
@@ -314,7 +314,7 @@ export default function Cadencias() {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleOpenEdit(cad)}
-                      className="h-8 px-2 text-xs text-[#003882] hover:bg-blue-50"
+                      className="h-8 px-2 text-xs text-[#1B2E5A] hover:bg-[#EBF6F8] hover:text-[#29AABE]"
                     >
                       Editar
                     </Button>
@@ -334,7 +334,7 @@ export default function Cadencias() {
               </CardHeader>
               <CardContent className="p-5 pt-4">
                 <div className="text-xs font-bold text-[#475569] mb-3 flex items-center gap-1.5">
-                  <Repeat className="h-3.5 w-3.5 text-[#003882]" />
+                  <Repeat className="h-3.5 w-3.5 text-[#29AABE]" />
                   Sequência ({etapasList.length} etapas programadas):
                 </div>
 
@@ -344,7 +344,7 @@ export default function Cadencias() {
                       key={idx}
                       className="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#F8FAFC] border border-[#F1F5F9] text-xs"
                     >
-                      <span className="h-5 w-5 rounded-full bg-white border border-[#CBD5E1] text-[#003882] font-black text-[10px] flex items-center justify-center shrink-0">
+                      <span className="h-5 w-5 rounded-full bg-white border border-[#CBD5E1] text-[#1B2E5A] font-black text-[10px] flex items-center justify-center shrink-0">
                         {idx + 1}
                       </span>
                       {et.tipo === 'email' ? (
@@ -377,11 +377,10 @@ export default function Cadencias() {
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-base font-bold text-[#003882]">
-              {editingId ? 'Editar Cadência Comercial' : 'Criar Sequência de Cadência'}
+            <DialogTitle className="text-lg font-bold text-[#1B2E5A] font-heading">
+              {editId ? 'Configurar Cadência' : 'Nova Cadência Comercial'}
             </DialogTitle>
           </DialogHeader>
-
           <form onSubmit={handleSaveCadencia} className="space-y-4">
             <div className="space-y-1">
               <Label htmlFor="nome-cad" className="text-xs font-semibold text-[#334155]">
@@ -446,7 +445,7 @@ export default function Cadencias() {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="h-5 w-5 rounded-full bg-[#003882] text-white text-[10px] font-bold flex items-center justify-center">
+                        <span className="h-5 w-5 rounded-full bg-[#1B2E5A] text-white text-[10px] font-bold flex items-center justify-center">
                           {idx + 1}
                         </span>
                         <span className="text-xs font-bold text-[#1E293B] uppercase">
@@ -461,9 +460,9 @@ export default function Cadencias() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleGerarComIA(idx)}
-                          className="h-6 px-2 text-[11px] text-[#00A859] hover:bg-[#EBF7F0] font-bold flex items-center gap-1"
+                          className="h-6 px-2 text-[11px] text-[#29AABE] hover:bg-[#EBF6F8] font-bold flex items-center gap-1"
                         >
-                          <Sparkles className="h-3 w-3" />
+                          <Sparkles className="h-3 w-3 text-[#F58220]" />
                           Gerar com IA
                         </Button>
                         <button
@@ -545,7 +544,7 @@ export default function Cadencias() {
                 type="submit"
                 size="sm"
                 disabled={saving}
-                className="bg-[#003882] hover:bg-[#00285e] text-white"
+                className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold"
               >
                 {saving ? 'Salvando...' : 'Salvar Cadência'}
               </Button>

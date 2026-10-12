@@ -65,17 +65,17 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#F0F5FA] via-[#F8FAFC] to-[#E9F3EE] p-4 sm:p-6">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#EBF6F8] via-[#F8FAFC] to-[#FEF3EB] p-4 sm:p-6">
       <div className="w-full max-w-md">
         {/* Brand Card */}
         <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-xl p-8 animate-fade-in-up">
           <div className="flex flex-col items-center text-center mb-8">
             <RisomedLogo size="lg" />
-            <h2 className="mt-6 text-2xl font-bold text-[#0F172A] tracking-tight">
+            <h2 className="mt-6 text-2xl font-bold text-[#1B2E5A] tracking-tight font-heading">
               Acesse sua conta
             </h2>
             <p className="mt-1.5 text-xs text-[#64748B] max-w-xs leading-relaxed">
-              Sistema interno de controle e automação da jornada comercial B2B.
+              Diagnóstico que revela. Benefícios que resolvem. Dados que comprovam.
             </p>
           </div>
 
@@ -99,10 +99,9 @@ export default function Login() {
                 placeholder="seu.nome@empresa.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-10 text-sm focus-visible:ring-[#003882]"
+                className="h-10 text-sm focus-visible:ring-[#1B2E5A] focus-visible:border-[#29AABE]"
               />
             </div>
-
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <Label htmlFor="pass" className="text-xs font-semibold text-[#334155]">
@@ -111,7 +110,7 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={handleForgotPassword}
-                  className="text-xs font-medium text-[#003882] hover:text-[#00285e] hover:underline"
+                  className="text-xs font-medium text-[#29AABE] hover:text-[#1E8B9C] hover:underline"
                 >
                   Esqueci minha senha
                 </button>
@@ -125,7 +124,7 @@ export default function Login() {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="h-10 text-sm pr-10 focus-visible:ring-[#003882]"
+                  className="h-10 text-sm pr-10 focus-visible:ring-[#1B2E5A] focus-visible:border-[#29AABE]"
                 />
                 <button
                   type="button"
@@ -137,11 +136,10 @@ export default function Login() {
                 </button>
               </div>
             </div>
-
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-10 mt-2 bg-[#003882] hover:bg-[#002960] text-white font-semibold transition active:scale-[0.99]"
+              className="w-full h-10 mt-2 bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold transition active:scale-[0.99] shadow-sm"
             >
               {loading ? (
                 <div className="flex items-center gap-2">
@@ -151,10 +149,10 @@ export default function Login() {
               ) : (
                 <div className="flex items-center justify-center gap-2">
                   <span>Entrar</span>
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 text-[#F58220]" />
                 </div>
               )}
-            </Button>
+            </Button>{' '}
           </form>
 
           {/* Seed demo quick fill */}
@@ -165,9 +163,9 @@ export default function Login() {
                 setEmail('alexandre@armodonto.com')
                 setPassword('Skip@Pass')
               }}
-              className="text-xs text-[#64748B] hover:text-[#003882] transition inline-flex items-center gap-1.5 font-medium underline"
+              className="text-xs text-[#64748B] hover:text-[#1B2E5A] transition inline-flex items-center gap-1.5 font-medium underline"
             >
-              <ShieldCheck className="h-3.5 w-3.5 text-[#00A859]" />
+              <ShieldCheck className="h-3.5 w-3.5 text-[#29AABE]" />
               Preencher com usuário demonstrativo
             </button>
           </div>
@@ -175,7 +173,10 @@ export default function Login() {
           <div className="mt-4 text-center">
             <p className="text-xs text-[#64748B]">
               Ainda não tem acesso?{' '}
-              <Link to="/register" className="font-semibold text-[#003882] hover:underline">
+              <Link
+                to="/register"
+                className="font-semibold text-[#1B2E5A] hover:text-[#29AABE] hover:underline"
+              >
                 Criar uma conta
               </Link>
             </p>
@@ -184,7 +185,7 @@ export default function Login() {
 
         {/* Microcopy Risomed */}
         <p className="mt-6 text-center text-xs text-[#64748B]">
-          Risomed · Diagnóstico que revela. Benefícios que resolvem.
+          Risomed · Cuidamos das pessoas. Geramos resultados para empresas.
         </p>
       </div>
     </div>

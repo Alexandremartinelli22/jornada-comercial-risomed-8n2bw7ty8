@@ -108,20 +108,20 @@ export default function Assistente() {
       {/* Chat Header */}
       <div className="p-4 sm:px-6 border-b border-[#E2E8F0] bg-white flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#003882] to-[#0052be] flex items-center justify-center text-white shadow-sm">
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#1B2E5A] to-[#29AABE] flex items-center justify-center text-white shadow-sm">
             <Bot className="h-5 w-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-base font-bold text-[#0F172A]">
+              <h2 className="text-base font-bold text-[#1B2E5A] font-heading">
                 Jornada Comercial · Agente de IA Risomed
               </h2>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#EBF7F0] text-[#00A859]">
-                Nativo Skip Cloud
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#EBF6F8] text-[#29AABE] border border-[#C6E6EC]">
+                Diagnóstico & Inteligência
               </span>
             </div>
             <p className="text-xs text-[#64748B]">
-              Especialista em saúde corporativa, diagnósticos NR-1 e condução do funil B2B.
+              Diagnóstico que revela. Benefícios que resolvem. Dados que comprovam.
             </p>
           </div>
         </div>
@@ -139,9 +139,9 @@ export default function Assistente() {
               },
             ])
           }}
-          className="text-xs border-[#CBD5E1] text-[#64748B] hover:text-[#003882]"
+          className="text-xs border-[#CBD5E1] text-[#64748B] hover:text-[#1B2E5A] hover:border-[#29AABE]"
         >
-          <RefreshCw className="h-3.5 w-3.5 mr-1" />
+          <RefreshCw className="h-3.5 w-3.5 mr-1 text-[#29AABE]" />
           Nova Conversa
         </Button>
       </div>
@@ -157,13 +157,13 @@ export default function Assistente() {
               className={`flex items-start gap-3 ${isUser ? 'flex-row-reverse' : 'flex-row'}`}
             >
               {isUser ? (
-                <div className="h-8 w-8 rounded-full bg-[#003882] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                <div className="h-8 w-8 rounded-full bg-[#1B2E5A] text-white flex items-center justify-center font-bold text-xs shrink-0 border border-[#29AABE]/30 shadow-xs">
                   {user?.name ? user.name[0].toUpperCase() : 'U'}
                 </div>
               ) : (
-                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#003882] to-[#00A859] p-0.5 shrink-0 flex items-center justify-center">
-                  <div className="h-full w-full rounded-full bg-white flex items-center justify-center text-[#003882]">
-                    <Sparkles className="h-4 w-4 text-[#00A859]" />
+                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#1B2E5A] to-[#29AABE] p-0.5 shrink-0 flex items-center justify-center">
+                  <div className="h-full w-full rounded-full bg-white flex items-center justify-center text-[#1B2E5A]">
+                    <Sparkles className="h-4 w-4 text-[#F58220]" />
                   </div>
                 </div>
               )}
@@ -171,7 +171,7 @@ export default function Assistente() {
               <div
                 className={`max-w-[85%] sm:max-w-xl rounded-2xl p-4 text-xs leading-relaxed shadow-xs whitespace-pre-wrap ${
                   isUser
-                    ? 'bg-[#003882] text-white rounded-tr-none'
+                    ? 'bg-[#1B2E5A] text-white rounded-tr-none shadow-sm'
                     : 'bg-white text-[#1E293B] border border-[#E2E8F0] rounded-tl-none'
                 }`}
               >
@@ -181,11 +181,11 @@ export default function Assistente() {
                 {m.citations && m.citations.length > 0 && (
                   <div className="mt-3 pt-2.5 border-t border-[#F1F5F9] text-[10px] text-[#64748B]">
                     <span className="font-bold flex items-center gap-1 mb-1">
-                      <BookOpen className="h-3 w-3 text-[#003882]" />
+                      <BookOpen className="h-3 w-3 text-[#29AABE]" />
                       Fontes consultadas:
                     </span>
                     {m.citations.map((c, i) => (
-                      <span key={i} className="inline-block mr-2 text-[#003882] font-semibold">
+                      <span key={i} className="inline-block mr-2 text-[#1B2E5A] font-semibold">
                         • {c.title || c.source_id}
                       </span>
                     ))}
@@ -199,23 +199,23 @@ export default function Assistente() {
         {/* Typing indicator */}
         {loading && (
           <div className="flex items-start gap-3">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#003882] to-[#00A859] p-0.5 shrink-0 flex items-center justify-center">
-              <div className="h-full w-full rounded-full bg-white flex items-center justify-center text-[#003882]">
-                <Sparkles className="h-4 w-4 text-[#00A859] animate-spin" />
+            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#1B2E5A] to-[#29AABE] p-0.5 shrink-0 flex items-center justify-center">
+              <div className="h-full w-full rounded-full bg-white flex items-center justify-center text-[#1B2E5A]">
+                <Sparkles className="h-4 w-4 text-[#F58220] animate-spin" />
               </div>
             </div>
             <div className="bg-white border border-[#E2E8F0] rounded-2xl rounded-tl-none p-4 shadow-xs">
               <div className="flex items-center gap-1.5">
                 <span
-                  className="h-2 w-2 rounded-full bg-[#003882] animate-bounce"
+                  className="h-2 w-2 rounded-full bg-[#1B2E5A] animate-bounce"
                   style={{ animationDelay: '0ms' }}
                 />
                 <span
-                  className="h-2 w-2 rounded-full bg-[#00A859] animate-bounce"
+                  className="h-2 w-2 rounded-full bg-[#29AABE] animate-bounce"
                   style={{ animationDelay: '150ms' }}
                 />
                 <span
-                  className="h-2 w-2 rounded-full bg-[#003882] animate-bounce"
+                  className="h-2 w-2 rounded-full bg-[#F58220] animate-bounce"
                   style={{ animationDelay: '300ms' }}
                 />
                 <span className="text-[11px] text-[#64748B] ml-2">
@@ -238,7 +238,7 @@ export default function Assistente() {
               key={i}
               type="button"
               onClick={() => handleSendMessage(prompt)}
-              className="px-2.5 py-1 text-[11px] rounded-full border border-[#CBD5E1] bg-[#F8FAFC] text-[#334155] hover:border-[#003882] hover:text-[#003882] shrink-0 transition"
+              className="px-2.5 py-1 text-[11px] rounded-full border border-[#CBD5E1] bg-[#F8FAFC] text-[#334155] hover:border-[#29AABE] hover:text-[#1B2E5A] hover:bg-[#EBF6F8]/50 shrink-0 transition"
             >
               {prompt}
             </button>
@@ -260,14 +260,14 @@ export default function Assistente() {
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             disabled={loading}
-            className="flex-1 h-11 text-xs focus-visible:ring-[#003882]"
+            className="flex-1 h-11 text-xs focus-visible:ring-[#1B2E5A] focus-visible:border-[#29AABE]"
           />
           <Button
             type="submit"
             disabled={loading || !inputMessage.trim()}
-            className="h-11 px-5 bg-[#003882] hover:bg-[#00285e] text-white font-semibold transition active:scale-[0.98]"
+            className="h-11 px-5 bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold transition active:scale-[0.98] shadow-sm"
           >
-            <Send className="h-4 w-4" />
+            <Send className="h-4 w-4 text-[#F58220]" />
           </Button>
         </form>
       </div>

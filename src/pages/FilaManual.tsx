@@ -213,16 +213,21 @@ export default function FilaManual() {
       <div className="flex flex-col gap-4 rounded-2xl border border-[#E2E8F0] bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <ListChecks className="h-6 w-6 text-[#003882]" />
-            <h2 className="text-2xl font-bold text-[#0F172A]">Fila Manual de Leads</h2>
+            <ListChecks className="h-6 w-6 text-[#1B2E5A]" />
+            <h2 className="text-2xl font-bold text-[#1B2E5A] font-heading">Fila Manual de Leads</h2>
           </div>
           <p className="mt-1 text-sm text-[#64748B]">
-            Fonte operacional da Fase 1: cada lead tem estágio, tag ICP e próxima ação com data.
+            Comece pequeno. Comprove o valor. Depois escale a prospecção da sua carteira.
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={exportCsv} disabled={!filtered.length}>
-            <Download className="mr-1.5 h-4 w-4" />
+          <Button
+            variant="outline"
+            onClick={exportCsv}
+            disabled={!filtered.length}
+            className="hover:border-[#29AABE]"
+          >
+            <Download className="mr-1.5 h-4 w-4 text-[#29AABE]" />
             Exportar CSV
           </Button>
           <Button
@@ -230,9 +235,9 @@ export default function FilaManual() {
               setForm(emptyForm)
               setModalOpen(true)
             }}
-            className="bg-[#003882] text-white"
+            className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold shadow-sm"
           >
-            <Plus className="mr-1.5 h-4 w-4" />
+            <Plus className="mr-1.5 h-4 w-4 text-[#F58220]" />
             Novo lead
           </Button>
         </div>
@@ -333,7 +338,7 @@ export default function FilaManual() {
                         {lead.tag_icp}
                       </span>
                     </td>
-                    <td className="px-4 py-3 font-semibold text-[#003882]">{lead.estagio}</td>
+                    <td className="px-4 py-3 font-semibold text-[#1B2E5A]">{lead.estagio}</td>
                     <td className="px-4 py-3">
                       <div className="font-semibold text-[#334155]">{lead.proxima_acao}</div>
                       <div className="text-[#64748B]">
@@ -361,7 +366,9 @@ export default function FilaManual() {
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-[#003882]">Registrar lead na fila</DialogTitle>
+            <DialogTitle className="text-[#1B2E5A] font-heading">
+              Registrar lead na fila
+            </DialogTitle>
           </DialogHeader>
           <form onSubmit={createLead} className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div>
@@ -493,7 +500,11 @@ export default function FilaManual() {
               <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
                 Cancelar
               </Button>
-              <Button type="submit" disabled={saving} className="bg-[#003882] text-white">
+              <Button
+                type="submit"
+                disabled={saving}
+                className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold"
+              >
                 {saving ? 'Salvando...' : 'Salvar lead'}
               </Button>
             </DialogFooter>

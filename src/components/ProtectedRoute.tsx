@@ -14,8 +14,8 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-[#F9FAFB]">
         <div className="flex flex-col items-center gap-3">
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#003882] border-t-transparent" />
-          <p className="text-sm font-medium text-[#003882]">Carregando Jornada Risomed...</p>
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#1B2E5A] border-t-[#29AABE]" />
+          <p className="text-sm font-medium text-[#1B2E5A]">Carregando Jornada Risomed...</p>
         </div>
       </div>
     )

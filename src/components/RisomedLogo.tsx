@@ -1,61 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+export const RISOMED_LOGO_URL =
+  'https://risomed.com.br/wp-content/uploads/2026/08/logo_risomed.webp'
 
 interface RisomedLogoProps {
+  size?: 'sm' | 'md' | 'lg' | 'xl'
+  showText?: boolean
   className?: string
-  size?: 'sm' | 'md' | 'lg'
-  showSubtitle?: boolean
+  variant?: 'default' | 'white'
 }
 
-export const RisomedLogo: React.FC<RisomedLogoProps> = ({
-  className = '',
+export function RisomedLogo({
   size = 'md',
-  showSubtitle = true,
-}) => {
-  const heights = {
-    sm: 'h-7',
-    md: 'h-9',
-    lg: 'h-12',
+  showText = true,
+  className = '',
+  variant = 'default',
+}: RisomedLogoProps) {
+  const [imgError, setImgError] = useState(false)
+
+  // Height mappings for logo image
+  const imgHeights = {
+    sm: 'h-6',
+    md: 'h-8',
+    lg: 'h-11',
+    xl: 'h-14',
+  }
+
+  // Fallback typographic logo if webp network is blocked/offline
+  if (imgError) {
+    return (
+      <div className={`flex items-center gap-2.5 select-none ${className}`}>
+        <div className="flex items-center font-black tracking-tight leading-none text-2xl font-heading">
+          <span className={variant === 'white' ? 'text-white' : 'text-[#1B2E5A]'}>Riso</span>
+          <span className="text-[#29AABE]">med,</span>
+          <span className="text-[#F58220] text-xs font-bold ml-1 uppercase tracking-wider self-end mb-0.5">
+            odonto
+          </span>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      {/* Brand Icon: Cross + Heart Wave (Saúde & Prevenção) */}
-      <div
-        className={`relative flex items-center justify-center rounded-xl bg-gradient-to-br from-[#003882] to-[#0052be] p-2 text-white shadow-sm shadow-[#003882]/20 ${heights[size]}`}
-      >
-        <svg
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-full w-auto"
-        >
-          {/* Medical Cross with rounded edges */}
-          <rect x="13" y="4" width="6" height="24" rx="3" fill="#FFFFFF" />
-          <rect x="4" y="13" width="24" height="6" rx="3" fill="#FFFFFF" />
-          {/* Pulse / Vital Curve in Vibrant Green */}
-          <path
-            d="M5 16H10L12.5 10L16 22L19.5 13L22 16H27"
-            stroke="#00A859"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-
-      <div className="flex flex-col">
-        <div className="flex items-center font-extrabold tracking-tight">
-          <span className="text-[#003882] text-xl font-black tracking-tight leading-none">
-            RISO
-          </span>
-          <span className="text-[#00A859] text-xl font-black tracking-tight leading-none">MED</span>
-        </div>
-        {showSubtitle && (
-          <span className="text-[9.5px] uppercase font-bold tracking-widest text-[#64748B] mt-0.5 leading-none">
-            Jornada Comercial
-          </span>
-        )}
-      </div>
+    <div className={`inline-flex items-center gap-2 select-none ${className}`}>
+      <img
+        src={RISOMED_LOGO_URL}
+        alt="Risomed | Saúde e Odonto Corporativo"
+        className={`${imgHeights[size]} w-auto object-contain transition-all ${
+          variant === 'white' ? 'brightness-0 invert' : ''
+        }`}
+        onError={() => setImgError(true)}
+        loading="eager"
+      />
     </div>
   )
 }
+export default RisomedLogo
