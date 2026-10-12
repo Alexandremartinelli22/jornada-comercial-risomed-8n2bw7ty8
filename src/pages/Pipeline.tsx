@@ -85,6 +85,10 @@ export default function Pipeline() {
     setModalOpen(true)
   }
 
+  const handleFastCreate = (etapa: EtapaNegocio) => {
+    handleOpenModal(etapa)
+  }
+
   const handleSaveNegocio = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!newNome.trim() || !newContaId || !newValor) {

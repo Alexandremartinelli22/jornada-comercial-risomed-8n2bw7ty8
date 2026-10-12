@@ -333,7 +333,13 @@ export default function FilaManual() {
                     </td>
                     <td className="px-4 py-3">
                       <span
-                        className={`rounded-full px-2 py-1 text-[10px] font-bold ${lead.tag_icp === 'ICP Principal' ? 'bg-emerald-100 text-emerald-800' : lead.tag_icp === 'Fora ICP' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}`}
+                        className={`rounded-full px-2 py-1 text-[10px] font-bold border ${
+                          lead.tag_icp === 'ICP Principal'
+                            ? 'bg-[#EBF6F8] text-[#1E8B9C] border-[#C6E6EC]'
+                            : lead.tag_icp === 'Fora ICP'
+                              ? 'bg-[#FEF3EB] text-[#F58220] border-[#FCD8BE]'
+                              : 'bg-slate-100 text-slate-700 border-slate-200'
+                        }`}
                       >
                         {lead.tag_icp}
                       </span>

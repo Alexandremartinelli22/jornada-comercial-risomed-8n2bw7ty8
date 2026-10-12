@@ -395,16 +395,16 @@ export default function Layout() {
                       </p>
                     </div>
                     <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
                         c.status === 'Fechado'
-                          ? 'bg-emerald-100 text-emerald-800'
+                          ? 'bg-[#FEF3EB] text-[#F58220] border-[#FCD8BE]'
                           : c.status === 'Negociação'
-                            ? 'bg-purple-100 text-purple-800'
-                            : 'bg-blue-100 text-blue-800'
+                            ? 'bg-[#4A6FA5]/15 text-[#4A6FA5] border-[#4A6FA5]/30'
+                            : 'bg-[#EBF6F8] text-[#1E8B9C] border-[#C6E6EC]'
                       }`}
                     >
                       {c.status}
-                    </span>
+                    </span>{' '}
                   </button>
                 ))
               )}

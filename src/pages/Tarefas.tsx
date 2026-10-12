@@ -315,20 +315,20 @@ export default function Tarefas() {
                     </td>
                     <td className="py-3.5 px-4">
                       <span className="inline-flex items-center gap-1 text-[11px] text-[#475569]">
-                        {t.tipo === 'call' && <PhoneCall className="h-3 w-3 text-sky-600" />}
-                        {t.tipo === 'email' && <Mail className="h-3 w-3 text-amber-600" />}
-                        {t.tipo === 'reuniao' && <Users className="h-3 w-3 text-purple-600" />}
+                        {t.tipo === 'call' && <PhoneCall className="h-3 w-3 text-[#29AABE]" />}
+                        {t.tipo === 'email' && <Mail className="h-3 w-3 text-[#F58220]" />}
+                        {t.tipo === 'reuniao' && <Users className="h-3 w-3 text-[#1B2E5A]" />}
                         {t.tipo.toUpperCase()}
                       </span>
                     </td>
                     <td className="py-3.5 px-4">
                       <span
-                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
                           t.prioridade === 'Alta'
-                            ? 'bg-red-100 text-red-800'
+                            ? 'bg-red-50 text-red-700 border-red-200'
                             : t.prioridade === 'Média'
-                              ? 'bg-amber-100 text-amber-800'
-                              : 'bg-slate-100 text-slate-800'
+                              ? 'bg-[#FEF3EB] text-[#F58220] border-[#FCD8BE]'
+                              : 'bg-slate-100 text-slate-700 border-slate-200'
                         }`}
                       >
                         {t.prioridade}
@@ -336,10 +336,10 @@ export default function Tarefas() {
                     </td>
                     <td className="py-3.5 px-4 whitespace-nowrap">
                       <div className="flex items-center gap-1.5">
-                        {urgente && <AlertTriangle className="h-3.5 w-3.5 text-amber-600" />}
+                        {urgente && <AlertTriangle className="h-3.5 w-3.5 text-[#F58220]" />}
                         <span
                           className={`text-xs ${
-                            urgente ? 'font-bold text-amber-700' : 'text-[#475569]'
+                            urgente ? 'font-bold text-[#F58220]' : 'text-[#475569]'
                           }`}
                         >
                           {new Date(t.data_vencimento).toLocaleDateString('pt-BR')}
@@ -348,10 +348,10 @@ export default function Tarefas() {
                     </td>
                     <td className="py-3.5 px-4 text-right">
                       <span
-                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
                           t.origem === 'cadencia'
-                            ? 'bg-[#EBF6F8] text-[#29AABE]'
-                            : 'bg-slate-100 text-slate-600'
+                            ? 'bg-[#EBF6F8] text-[#1E8B9C] border-[#C6E6EC]'
+                            : 'bg-slate-100 text-slate-600 border-slate-200'
                         }`}
                       >
                         {t.origem === 'cadencia' ? 'Cadência IA' : 'Manual'}

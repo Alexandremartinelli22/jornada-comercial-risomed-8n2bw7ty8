@@ -275,15 +275,17 @@ export default function Cadencias() {
             <Card
               key={cad.id}
               className={`rounded-2xl border transition shadow-sm hover:shadow-md ${
-                isAtiva ? 'border-[#BBF7D0]' : 'border-[#E2E8F0]'
+                isAtiva ? 'border-[#C6E6EC] bg-white' : 'border-[#E2E8F0]'
               }`}
             >
               <CardHeader className="p-5 pb-3 border-b border-[#F8FAFC]">
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <span
-                      className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
-                        isAtiva ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-700'
+                      className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                        isAtiva
+                          ? 'bg-[#EBF6F8] text-[#1E8B9C] border-[#C6E6EC]'
+                          : 'bg-slate-100 text-slate-700 border-slate-200'
                       }`}
                     >
                       {isAtiva ? (
@@ -304,7 +306,7 @@ export default function Cadencias() {
                       onClick={() => handleToggleStatus(cad)}
                       className={`h-8 px-2 text-xs font-semibold ${
                         isAtiva
-                          ? 'text-amber-700 hover:bg-amber-50'
+                          ? 'text-[#F58220] hover:bg-[#FEF3EB]'
                           : 'text-[#29AABE] hover:bg-[#EBF6F8]'
                       }`}
                     >
@@ -348,9 +350,9 @@ export default function Cadencias() {
                         {idx + 1}
                       </span>
                       {et.tipo === 'email' ? (
-                        <Mail className="h-3.5 w-3.5 text-amber-600 shrink-0" />
+                        <Mail className="h-3.5 w-3.5 text-[#F58220] shrink-0" />
                       ) : (
-                        <CheckSquare className="h-3.5 w-3.5 text-sky-600 shrink-0" />
+                        <CheckSquare className="h-3.5 w-3.5 text-[#29AABE] shrink-0" />
                       )}
                       <span className="font-semibold text-[#1E293B] truncate flex-1">
                         {et.tipo === 'email' ? et.titulo || 'E-mail' : et.descricao || 'Tarefa'}
@@ -378,7 +380,7 @@ export default function Cadencias() {
         <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-lg font-bold text-[#1B2E5A] font-heading">
-              {editId ? 'Configurar Cadência' : 'Nova Cadência Comercial'}
+              {editingId ? 'Configurar Cadência' : 'Nova Cadência Comercial'}
             </DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSaveCadencia} className="space-y-4">
@@ -423,7 +425,7 @@ export default function Cadencias() {
                     onClick={() => handleAddEtapa('email')}
                     className="h-7 text-xs border-[#CBD5E1]"
                   >
-                    <Mail className="h-3 w-3 mr-1 text-amber-600" />+ E-mail
+                    <Mail className="h-3 w-3 mr-1 text-[#F58220]" />+ E-mail
                   </Button>
                   <Button
                     type="button"
@@ -432,7 +434,7 @@ export default function Cadencias() {
                     onClick={() => handleAddEtapa('tarefa')}
                     className="h-7 text-xs border-[#CBD5E1]"
                   >
-                    <CheckSquare className="h-3 w-3 mr-1 text-sky-600" />+ Tarefa
+                    <CheckSquare className="h-3 w-3 mr-1 text-[#29AABE]" />+ Tarefa
                   </Button>
                 </div>
               </div>

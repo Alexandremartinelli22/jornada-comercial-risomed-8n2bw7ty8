@@ -323,10 +323,10 @@ export default function DetalhesConta() {
                     </p>
                   </div>
                   <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
                       t.status === 'concluida'
-                        ? 'bg-emerald-100 text-emerald-800'
-                        : 'bg-amber-100 text-amber-800'
+                        ? 'bg-[#EBF6F8] text-[#1E8B9C] border-[#C6E6EC]'
+                        : 'bg-[#FEF3EB] text-[#F58220] border-[#FCD8BE]'
                     }`}
                   >
                     {t.status}

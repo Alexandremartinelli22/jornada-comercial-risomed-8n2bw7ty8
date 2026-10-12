@@ -34,12 +34,12 @@ import {
 } from '@/components/ui/dialog'
 import { useToast } from '@/hooks/use-toast'
 
-const STATUS_CORES: Record<StatusConta, { bg: string; text: string }> = {
-  Prospecção: { bg: 'bg-slate-100', text: 'text-slate-800' },
-  Diagnóstico: { bg: 'bg-sky-100', text: 'text-sky-800' },
-  Proposta: { bg: 'bg-blue-100', text: 'text-blue-800' },
-  Negociação: { bg: 'bg-purple-100', text: 'text-purple-800' },
-  Fechado: { bg: 'bg-emerald-100', text: 'text-emerald-800' },
+const STATUS_CORES: Record<StatusConta, { bg: string; text: string; border?: string }> = {
+  Prospecção: { bg: 'bg-slate-100', text: 'text-slate-700', border: 'border-slate-200' },
+  Diagnóstico: { bg: 'bg-[#EBF6F8]', text: 'text-[#1E8B9C]', border: 'border-[#C6E6EC]' },
+  Proposta: { bg: 'bg-[#1B2E5A]/10', text: 'text-[#1B2E5A]', border: 'border-[#1B2E5A]/20' },
+  Negociação: { bg: 'bg-[#4A6FA5]/15', text: 'text-[#4A6FA5]', border: 'border-[#4A6FA5]/30' },
+  Fechado: { bg: 'bg-[#FEF3EB]', text: 'text-[#F58220]', border: 'border-[#FCD8BE]' },
 }
 
 export default function Contas() {
@@ -55,8 +55,9 @@ export default function Contas() {
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('todos')
 
-  // Modal Nova Conta
+  // Modal Conta (Nova / Editar)
   const [modalOpen, setModalOpen] = useState(false)
+  const [editingId, setEditingId] = useState<string | null>(null)
   const [nome, setNome] = useState('')
   const [cnpj, setCnpj] = useState('')
   const [setor, setSetor] = useState('')
@@ -111,6 +112,7 @@ export default function Contas() {
   }, [contas, search, statusFilter])
 
   const handleOpenModal = () => {
+    setEditingId(null)
     setNome('')
     setCnpj('')
     setSetor('')
@@ -123,7 +125,7 @@ export default function Contas() {
     setModalOpen(true)
   }
 
-  const handleCreateConta = async (e: React.FormEvent) => {
+  const handleSaveConta = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!nome.trim()) {
       toast({
@@ -136,40 +138,56 @@ export default function Contas() {
 
     try {
       setSaving(true)
-      const novaConta = await crmService.createConta({
-        nome: nome.trim(),
-        cnpj: cnpj.trim() || undefined,
-        setor: setor.trim() || undefined,
-        tamanho,
-        site: site.trim() || undefined,
-        telefone: telefone.trim() || undefined,
-        status,
-        responsavel_id: user?.id,
-      })
+      if (editingId) {
+        await crmService.updateConta(editingId, {
+          nome: nome.trim(),
+          cnpj: cnpj.trim() || undefined,
+          setor: setor.trim() || undefined,
+          tamanho,
+          site: site.trim() || undefined,
+          telefone: telefone.trim() || undefined,
+          status,
+        })
+        toast({
+          title: 'Conta atualizada com sucesso!',
+          description: `${nome} foi atualizada.`,
+        })
+      } else {
+        const novaConta = await crmService.createConta({
+          nome: nome.trim(),
+          cnpj: cnpj.trim() || undefined,
+          setor: setor.trim() || undefined,
+          tamanho,
+          site: site.trim() || undefined,
+          telefone: telefone.trim() || undefined,
+          status,
+          responsavel_id: user?.id,
+        })
 
-      if (criarNegocioJunto && valorNegocio) {
-        const val = parseFloat(valorNegocio.replace(/\./g, '').replace(',', '.')) || 0
-        if (val > 0) {
-          await crmService.createNegocio({
-            nome: `Implantação Risomed - ${novaConta.nome}`,
-            conta_id: novaConta.id,
-            valor: val,
-            etapa: status === 'Fechado' ? 'Fechamento' : status,
-            responsavel_id: user?.id,
-          })
+        if (criarNegocioJunto && valorNegocio) {
+          const val = parseFloat(valorNegocio.replace(/\./g, '').replace(',', '.')) || 0
+          if (val > 0) {
+            await crmService.createNegocio({
+              nome: `Implantação Risomed - ${novaConta.nome}`,
+              conta_id: novaConta.id,
+              valor: val,
+              etapa: status === 'Fechado' ? 'Fechamento' : status,
+              responsavel_id: user?.id,
+            })
+          }
         }
-      }
 
-      toast({
-        title: 'Conta criada com sucesso!',
-        description: `${novaConta.nome} agora faz parte da jornada comercial.`,
-      })
+        toast({
+          title: 'Conta criada com sucesso!',
+          description: `${novaConta.nome} agora faz parte da jornada comercial.`,
+        })
+      }
       setModalOpen(false)
       loadData()
     } catch (err) {
       console.error(err)
       toast({
-        title: 'Erro ao criar conta',
+        title: editingId ? 'Erro ao atualizar conta' : 'Erro ao criar conta',
         variant: 'destructive',
       })
     } finally {
@@ -285,7 +303,7 @@ export default function Contas() {
                     </td>
                     <td className="py-3.5 px-4">
                       <span
-                        className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold ${badge.bg} ${badge.text}`}
+                        className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold border ${badge.bg} ${badge.text} ${badge.border || 'border-transparent'}`}
                       >
                         {c.status}
                       </span>
@@ -332,7 +350,7 @@ export default function Contas() {
                 <div className="flex items-start justify-between">
                   <h3 className="font-bold text-sm text-[#0F172A]">{c.nome}</h3>
                   <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${badge.bg} ${badge.text}`}
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${badge.bg} ${badge.text} ${badge.border || 'border-transparent'}`}
                   >
                     {c.status}
                   </span>
@@ -357,10 +375,10 @@ export default function Contas() {
         <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-lg font-bold text-[#1B2E5A] font-heading">
-              {editId ? 'Editar Conta' : 'Nova Conta Corporativa'}
+              {editingId ? 'Editar Conta' : 'Nova Conta Corporativa'}
             </DialogTitle>
-          </DialogHeader>{' '}
-          <form onSubmit={handleCreateConta} className="space-y-3.5">
+          </DialogHeader>
+          <form onSubmit={handleSaveConta} className="space-y-3.5">
             <div className="space-y-1">
               <Label htmlFor="nome-conta" className="text-xs font-semibold text-[#334155]">
                 Razão Social ou Nome Fantasia *
@@ -490,7 +508,7 @@ export default function Contas() {
                   type="checkbox"
                   checked={criarNegocioJunto}
                   onChange={(e) => setCriarNegocioJunto(e.target.checked)}
-                  className="rounded text-[#003882] focus:ring-[#003882] h-4 w-4"
+                  className="rounded text-[#1B2E5A] focus:ring-[#1B2E5A] h-4 w-4"
                 />
                 <span className="text-xs font-semibold text-[#1E293B]">
                   Criar oportunidade/negócio vinculada imediatamente
@@ -498,8 +516,8 @@ export default function Contas() {
               </label>
 
               {criarNegocioJunto && (
-                <div className="p-3 bg-[#F0F5FA] rounded-lg border border-[#DCE7F3] space-y-1 animate-fade-in-up">
-                  <Label htmlFor="val-neg-rapido" className="text-xs font-semibold text-[#003882]">
+                <div className="p-3 bg-[#EBF6F8] rounded-lg border border-[#C6E6EC] space-y-1 animate-fade-in-up">
+                  <Label htmlFor="val-neg-rapido" className="text-xs font-semibold text-[#1B2E5A]">
                     Valor do Negócio (R$)
                   </Label>
                   <Input
@@ -523,7 +541,7 @@ export default function Contas() {
                 disabled={saving}
                 className="bg-[#1B2E5A] hover:bg-[#132140] text-white font-semibold"
               >
-                {saving ? 'Cadastrando...' : 'Cadastrar Conta'}
+                {saving ? 'Salvando...' : editingId ? 'Salvar Alterações' : 'Cadastrar Conta'}
               </Button>
             </DialogFooter>
           </form>
