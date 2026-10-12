@@ -7,7 +7,8 @@
 - Dono: Giuseppe (implementação) / comercial Risomed (operação)
 - Critério: fila autenticada com campos obrigatórios, estágios, tags ICP, próxima ação com data, validações e exportação
 - Prova humana pendente: acesso negado a conta não autorizada e restauração de exportação/versão
-- Status: implementando
+- Status: aguardando_teste_humano
+- Verificação automática: Skip QA v0.0.4 passou em setup, análise estática, build, integrações e testes
 
 ## Limite desta task
 
