@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
-export const RISOMED_LOGO_URL =
-  'https://risomed.com.br/wp-content/uploads/2026/08/logo_risomed.webp'
+export const RISOMED_LOGO_URL = '/logo-risomed.svg'
 
 interface RisomedLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -12,7 +11,7 @@ interface RisomedLogoProps {
 
 export function RisomedLogo({
   size = 'md',
-  showText = true,
+  showText: _showText = true,
   className = '',
   variant = 'default',
 }: RisomedLogoProps) {
@@ -20,30 +19,48 @@ export function RisomedLogo({
 
   // Height mappings for logo image
   const imgHeights = {
-    sm: 'h-6',
-    md: 'h-8',
-    lg: 'h-11',
-    xl: 'h-14',
+    sm: 'h-7',
+    md: 'h-10',
+    lg: 'h-14',
+    xl: 'h-16',
   }
 
-  // Fallback typographic logo if webp network is blocked/offline
+  // Fallback typographic logo if asset fails to load
   if (imgError) {
     return (
-      <div className={`flex items-center gap-2.5 select-none ${className}`}>
-        <div className="flex items-center font-black tracking-tight leading-none text-2xl font-heading">
-          <span className={variant === 'white' ? 'text-white' : 'text-[#1B2E5A]'}>Riso</span>
-          <span className="text-[#29AABE]">med</span>
-          <span className="text-[#F58220] text-2xl font-black">.</span>
+      <div className={`inline-flex flex-col select-none ${className}`}>
+        <div className="flex items-baseline font-extrabold tracking-tight leading-[0.88] text-2xl font-heading">
+          <div className="flex flex-col">
+            <span className={variant === 'white' ? 'text-white' : 'text-[#00778B]'}>Riso</span>
+            <div className="flex items-center">
+              <span className={variant === 'white' ? 'text-white' : 'text-[#00778B]'}>med</span>
+              <svg className="w-2.5 h-3.5 ml-0.5" viewBox="0 0 10 14" fill="none">
+                <path
+                  d="M2 2 C 7 6, 8 10, 3 13"
+                  stroke={variant === 'white' ? '#FFFFFF' : '#00778B'}
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
+        <span
+          className={`text-[9px] font-semibold tracking-[0.2em] -mt-0.5 ${
+            variant === 'white' ? 'text-white/80' : 'text-[#E87722]'
+          }`}
+        >
+          odonto
+        </span>
       </div>
     )
   }
 
   return (
-    <div className={`inline-flex items-center gap-2 select-none ${className}`}>
+    <div className={`inline-flex items-center select-none ${className}`}>
       <img
         src={RISOMED_LOGO_URL}
-        alt="Risomed | Cuidamos das pessoas. Geramos resultados para empresas."
+        alt="Risomed odonto | Cuidamos das pessoas. Geramos resultados para empresas."
         className={`${imgHeights[size]} w-auto object-contain transition-all ${
           variant === 'white' ? 'brightness-0 invert' : ''
         }`}
