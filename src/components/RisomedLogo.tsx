@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 export const RISOMED_LOGO_URL = '/logo-risomed.svg'
+export const RISOMED_LOGO_WHITE_URL = '/logo-risomed-white.svg'
+export const RISOMED_SYMBOL_URL = '/logo-risomed-symbol.svg'
 
 interface RisomedLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -17,41 +19,59 @@ export function RisomedLogo({
 }: RisomedLogoProps) {
   const [imgError, setImgError] = useState(false)
 
-  // Height mappings for logo image
+  // Alturas para cada tamanho
   const imgHeights = {
-    sm: 'h-7',
-    md: 'h-10',
-    lg: 'h-14',
-    xl: 'h-16',
+    sm: 'h-6',
+    md: 'h-9',
+    lg: 'lg:h-12 h-10',
+    xl: 'h-14',
   }
 
-  // Fallback typographic logo if asset fails to load
+  const logoSrc = variant === 'white' ? RISOMED_LOGO_WHITE_URL : RISOMED_LOGO_URL
+  const textColor = variant === 'white' ? '#FFFFFF' : '#1B2E5A'
+
+  // Fallback vetorial inline garantido e auto-suficiente caso a imagem externa falhe
   if (imgError) {
+    const fallbackSizes = {
+      sm: { w: 120, h: 44, fontSize: 24, strokeWidth: 2.2 },
+      md: { w: 150, h: 55, fontSize: 30, strokeWidth: 2.6 },
+      lg: { w: 190, h: 70, fontSize: 38, strokeWidth: 3.2 },
+      xl: { w: 220, h: 80, fontSize: 44, strokeWidth: 3.6 },
+    }
+    const cfg = fallbackSizes[size]
+
     return (
-      <div className={`inline-flex flex-col select-none ${className}`}>
-        <div className="flex items-baseline font-extrabold tracking-tight leading-[0.88] text-2xl font-heading">
-          <div className="flex flex-col">
-            <span className={variant === 'white' ? 'text-white' : 'text-[#00778B]'}>Riso</span>
-            <div className="flex items-center">
-              <span className={variant === 'white' ? 'text-white' : 'text-[#00778B]'}>med</span>
-              <svg className="w-2.5 h-3.5 ml-0.5" viewBox="0 0 10 14" fill="none">
-                <path
-                  d="M2 2 C 7 6, 8 10, 3 13"
-                  stroke={variant === 'white' ? '#FFFFFF' : '#00778B'}
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <span
-          className={`text-[9px] font-semibold tracking-[0.2em] -mt-0.5 ${
-            variant === 'white' ? 'text-white/80' : 'text-[#E87722]'
-          }`}
+      <div className={`inline-flex items-center select-none ${className}`}>
+        <svg
+          viewBox="0 0 220 80"
+          width={cfg.w}
+          height={cfg.h}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="Risomed"
+          className="w-auto h-auto"
         >
-          odonto
-        </span>
+          {/* Wordmark puro em uma palavra só */}
+          <text
+            x="14"
+            y="45"
+            fontFamily="'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+            fontWeight="700"
+            fontSize="39"
+            fill={textColor}
+            letterSpacing="-0.02em"
+          >
+            Risomed
+          </text>
+          {/* Grande arco de sorriso elegante */}
+          <path
+            d="M 19 51 C 28 65, 62 72, 105 72 C 148 72, 175 66, 191 61"
+            stroke={textColor}
+            strokeWidth="2.8"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </svg>
       </div>
     )
   }
@@ -59,15 +79,14 @@ export function RisomedLogo({
   return (
     <div className={`inline-flex items-center select-none ${className}`}>
       <img
-        src={RISOMED_LOGO_URL}
-        alt="Risomed odonto | Cuidamos das pessoas. Geramos resultados para empresas."
-        className={`${imgHeights[size]} w-auto object-contain transition-all ${
-          variant === 'white' ? 'brightness-0 invert' : ''
-        }`}
+        src={logoSrc}
+        alt="Risomed | Cuidamos das pessoas. Geramos resultados para empresas."
+        className={`${imgHeights[size]} w-auto object-contain transition-all`}
         onError={() => setImgError(true)}
         loading="eager"
       />
     </div>
   )
 }
+
 export default RisomedLogo

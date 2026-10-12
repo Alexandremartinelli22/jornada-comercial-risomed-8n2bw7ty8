@@ -1,30 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" width="240" height="100" fill="none">
-  <!-- Brand typography definition and vector curves -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 160" width="440" height="160" fill="none">
+  <!-- Wordmark "Risomed" em uma única palavra, fonte geométrica arredondada -->
   <defs>
     <style>
-      .brand-title {
-        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        line-height: 0.9;
-      }
-      .brand-sub {
-        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap');
+      .risomed-wordmark {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         font-weight: 600;
-        letter-spacing: 0.18em;
+        letter-spacing: -0.015em;
       }
     </style>
   </defs>
 
-  <!-- Riso -->
-  <text x="75" y="44" class="brand-title" font-size="37" fill="#00778B">Riso</text>
+  <g id="risomed-logo">
+    <!-- Texto "Risomed" -->
+    <text
+      x="28"
+      y="90"
+      class="risomed-wordmark"
+      font-size="78"
+      fill="#1B2E5A"
+    >Risomed</text>
 
-  <!-- med -->
-  <text x="75" y="77" class="brand-title" font-size="37" fill="#00778B">med</text>
-
-  <!-- Smile / Arc accent next to med: curve that forms the trademark smile -->
-  <path d="M152 64 C 158 72, 161 78, 153 84" stroke="#00778B" stroke-width="4.2" stroke-linecap="round" fill="none" />
-
-  <!-- odonto descriptor underneath -->
-  <text x="75" y="93" class="brand-sub" font-size="12" fill="#E87722">odonto</text>
+    <!-- Grande arco de sorriso elegante por baixo do texto, estilo smile/swoosh:
+         Inicia abaixo da perna do 'R' (x≈40, y≈102),
+         desce em arco amplo harmonioso (ponto mais baixo x≈210, y≈142),
+         e sobe suavemente até a direita abaixo do 'd' (x≈378, y≈124) -->
+    <path
+      d="M 38 102 C 55 130, 125 144, 210 144 C 295 144, 348 132, 382 122"
+      stroke="#1B2E5A"
+      stroke-width="5.5"
+      stroke-linecap="round"
+      fill="none"
+    />
+  </g>
 </svg>
