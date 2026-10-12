@@ -160,13 +160,13 @@ export default function Login() {
             <button
               type="button"
               onClick={() => {
-                setEmail('alexandre@armodonto.com')
+                setEmail('alexandre@risomed.com.br')
                 setPassword('Skip@Pass')
               }}
               className="text-xs text-[#64748B] hover:text-[#1B2E5A] transition inline-flex items-center gap-1.5 font-medium underline"
             >
               <ShieldCheck className="h-3.5 w-3.5 text-[#29AABE]" />
-              Preencher com usuário demonstrativo
+              Preencher com usuário demonstrativo (alexandre@risomed.com.br)
             </button>
           </div>
 

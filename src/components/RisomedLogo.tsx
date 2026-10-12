@@ -32,10 +32,8 @@ export function RisomedLogo({
       <div className={`flex items-center gap-2.5 select-none ${className}`}>
         <div className="flex items-center font-black tracking-tight leading-none text-2xl font-heading">
           <span className={variant === 'white' ? 'text-white' : 'text-[#1B2E5A]'}>Riso</span>
-          <span className="text-[#29AABE]">med,</span>
-          <span className="text-[#F58220] text-xs font-bold ml-1 uppercase tracking-wider self-end mb-0.5">
-            odonto
-          </span>
+          <span className="text-[#29AABE]">med</span>
+          <span className="text-[#F58220] text-2xl font-black">.</span>
         </div>
       </div>
     )
@@ -45,7 +43,7 @@ export function RisomedLogo({
     <div className={`inline-flex items-center gap-2 select-none ${className}`}>
       <img
         src={RISOMED_LOGO_URL}
-        alt="Risomed | Saúde e Odonto Corporativo"
+        alt="Risomed | Cuidamos das pessoas. Geramos resultados para empresas."
         className={`${imgHeights[size]} w-auto object-contain transition-all ${
           variant === 'white' ? 'brightness-0 invert' : ''
         }`}
